@@ -4,5 +4,12 @@ runtime: go
 api_version: go1
 
 handlers:
+
+- url: /(.*\.(json|png|jpg))$
+  static_files: hello/dist/\1
+  upload: hello/dist/.*\.(json|png|jpg)$
+  secure: optional
+  
 - url: /.*
   script: _go_app
+  secure: always
